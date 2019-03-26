@@ -1,8 +1,11 @@
 # Aliases and functions
 
-#git
+# git aliases
 #alias g=git
-#When invoked without arguments g will do a short Git status, otherwise it will just pass on the given arguments to the git command. Status is likely to the be Git command one will execute the most, hence this simple enhancement does prove very useful in practice.
+# When invoked without arguments g will do a status, otherwise it will 
+# just pass on the given arguments to the git command. Status is likely 
+# to the be Git command one will execute the most, hence this simple 
+# enhancement does prove very useful in practice.
 #alias g='_f() { if [[ $# == 0 ]]; then git status --short --branch; else git "$@"; fi }; _f'
 alias g='_f() { if [[ $# == 0 ]]; then git status; else git "$@"; fi }; _f'
 complete -o default -o nospace -F _git g
@@ -73,11 +76,6 @@ alias du='du -ch'
 alias cp='/bin/cp -i'
 alias mv='/bin/mv -i'
 alias rm='/bin/rm -i'
-
-# More color aliases
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
 
 ######################################
 # Functions
