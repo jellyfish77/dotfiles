@@ -30,29 +30,3 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-#############################################################
-#OQ My Changes below this point
-#############################################################
-
-SCRIPTS="/home/otto/scripts"
-PATH="$PATH:$SCRIPTS"
-export PATH
-
-PATH="$PATH:/opt/apache-maven-3.6.0/bin"
-export PATH
-
-PATH="$PATH:/opt/fuse-7.2.0/bin"
-export PATH
-
-INSTALL_DIR='opt'
-JAVA_DIR='java/current'
-JAVA_DIR="/$INSTALL_DIR/$JAVA_DIR"
-export JAVA_HOME=$JAVA_DIR
-
-# OQ - For sublime text to be default
-#export EDITOR=/opt/sublime_text/sublime_text -w -n
-#export EDITOR='subl -w -n'
-#export EDITOR='subl -w'
-#export VISUAL=$EDITOR
-
-

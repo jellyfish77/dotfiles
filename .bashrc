@@ -125,94 +125,14 @@ fi
 # OQ changes below this point
 #############################################################
 
-# Add bash aliases
-if [ -f ~/.bash_aliases ]; then
-    source ~/.bash_aliases
+# Add my custom environment variables
+if [ -f ~/.bash_environ ]; then
+    source ~/.bash_env
 fi
-
-# Set the default editor
-export EDITOR=nano
-export VISUAL='nano'
 
 # Tilix config
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-		source /etc/profile.d/vte.sh
+	source /etc/profile.d/vte.sh
 fi
-
-########################################## 
-# History config...
-##########################################
-
-export HISTTIMEFORMAT="%d/%m/%y %T "
-
-# Avoid succesive duplicates in the bash command history.
-#export HISTCONTROL=ignoredups
-
-# Append commands to the bash command history file (~/.bash_history)
-# instead of overwriting it.
-shopt -s histappend
-
-# Append commands to the history every time a prompt is shown,
-# instead of after closing the session.
-PROMPT_COMMAND='history -a'
-
-HISTCONTROL='erasedups:ignoreboth'
-HISTIGNORE=?:??
-HISTFILESIZE=99999
-HISTSIZE=99999
-shopt -s histappend histverify
-
-##########################################
-# Seafly Prompt config...
-##########################################
-
-# OQ - force display prompt on new line
-shopt -s promptvars
-PS1='$(printf "%$((COLUMNS-1))s\r")'$PS1
-
-#seafly prompt, see: https://github.com/bluz71/bash-seafly-prompt
-#export SEAFLY_SHOW_USER=0
-#export SEAFLY_PROMPT_SYMBOL=">"
-#export SEAFLY_PS2_PROMPT_SYMBOL=">"
-#export SEAFLY_GIT_PREFIX="("
-#export SEAFLY_GIT_SUFFIX=")"
-#export SEAFLY_GIT_DIRTY="*"
-#export SEAFLY_GIT_STASH="$"
-#export SEAFLY_GIT_AHEAD=">"
-#export SEAFLY_GIT_BEHIND="<"
-#export SEAFLY_GIT_DIVERGED="<>"
-export SEAFLY_NORMAL_COLOR="$(tput bold; tput setaf 63)"
-export SEAFLY_ALERT_COLOR="$(tput bold; tput setaf 202)"
-export SEAFLY_HOST_COLOR="$(tput bold; tput setaf 242)"
-#export SEAFLY_GIT_COLOR="$(tput bold; tput setaf 99)"
-export SEAFLY_GIT_COLOR="$(tput bold; tput setaf 4)"
-#export SEAFLY_PATH_COLOR="$(tput bold; tput setaf 70)"
-export SEAFLY_PATH_COLOR="$(tput bold; tput setaf 3)"
-export SEAFLY_SHOW_USER=1
-export PROMPT_DIRTRIM=1
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWSTASHSTATE=1
-export GIT_PS1_SHOWUPSTREAM=1
-. ~/.bash-seafly-prompt/command_prompt.bash
-
-#OQ - set red prompt 
-#export PS1="\e[1;33m[\u@\h \W]\$ \e[m "
-#export PS1="\e[1;33m[\u@\h:\w]\$ \e[m "
-export PS1="\e[1;33m[\u:\w]\$ \e[m "
-#export PS1="\[\e[32m\][\[\e[m\]\[\e[31m\]\u\[\e[m\]\[\e[33m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[36m\]\w\[\e[m\]\[\e[32m\]]\[\e[m\]\[\e[32;47m\]\\$\[\e[m\] "
-#export PS1="\[$(tput setaf 1)\]\u@\h:\w $ \[$(tput sgr0)\]"
-#export PS1="[\[\e[1;34m\]$WINDOW\[\e[0m\]:\[\e[1;$UCOL\]\$(sens)\[\e[0m\]$SEP\u@\[\e[1;$ENV\]\h.$ENAME\[\e[0m\]:\[\e[1;31m\]\$(get_branch)\[\e[0m\] \w]\\$ ";
-
-#note, this prevents seafly working
-#export PROMPT_COMMAND="date +%H:%M:%S"
-#same line
-#export PROMPT_COMMAND="echo -n [$(date +%H:%M:%S)]"
-
-#shorten deep prompts (\w)
-#PROMPT_DIRTRIM=4
-
-
-
-
 
 

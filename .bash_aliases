@@ -89,4 +89,9 @@ pe() {
 	printf "Matches: " && bash -c printenv | grep -i -c "$1";
 }
 
+#reload bash profile
+rl() {
+	. ~/.profile
+}
+
 foo(){ echo "Hello"; }
