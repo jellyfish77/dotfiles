@@ -35,6 +35,7 @@ alias h='history'
 alias j='jobs -l'
 alias n='nano'
 alias sn='sudo nano'
+alias pe='printenv'
 
 alias path='echo -e ${PATH//:/\\n}'
 alias now='date +"%T"'
@@ -77,3 +78,14 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+######################################
+# Functions
+#
+# Can be called as commands in bash
+######################################
+
+pe() {
+	bash -c printenv | grep "$1";
+}
+
+foo(){ echo "Hello"; }
