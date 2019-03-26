@@ -86,7 +86,6 @@ alias egrep='egrep --color=auto'
 ######################################
 
 pe() {
-	echo "Printing Environment..."
 	bash -c printenv | grep -i "$1";
 	printf "Matches: " && bash -c printenv | grep -i -c "$1";
 }
@@ -94,6 +93,30 @@ pe() {
 #reload bash profile
 rl() {
 	. ~/.profile
+}
+
+# Add a string to the PATH
+add_to_path() {
+	if contains "$PATH" "$1"
+	then
+		:
+		#echo "$1 already in PATH"
+	else
+		#echo "Adding $1 to PATH..."
+		export PATH=$PATH:$1
+	fi
+}
+alias atp='add_to_path'
+
+contains() {
+    string="$1"
+    substring="$2"
+    if test "${string#*$substring}" != "$string"
+    then
+        return 0    # $substring is in $string
+    else
+        return 1    # $substring is not in $string
+    fi
 }
 
 foo(){ echo "Hello"; }
