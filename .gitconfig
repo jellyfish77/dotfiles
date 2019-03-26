@@ -33,6 +33,7 @@
 	ls=ls-files                 # list all files in the staging index
 	lss=ls-files -s	   			# list files in the staging index (with additional metadata)
 	aa = add .                   # (a)dd all untracked changes to staging
+	at = add -u 				# add only currently tracked files
 	us = reset                  # (u)n(s)tage - remove all changes from staging, leaves working directory unchanged
 	b = branch -a -vv           # list all (b)ranches
 	ub = branch --no-merged master   # list all (u)merged (b)ranchnes (onto master)
