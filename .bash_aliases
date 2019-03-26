@@ -35,7 +35,6 @@ alias h='history'
 alias j='jobs -l'
 alias n='nano'
 alias sn='sudo nano'
-alias pe='printenv'
 
 alias path='echo -e ${PATH//:/\\n}'
 alias now='date +"%T"'
@@ -85,7 +84,9 @@ alias egrep='egrep --color=auto'
 ######################################
 
 pe() {
-	bash -c printenv | grep "$1";
+	echo "Printing Environment..."
+	bash -c printenv | grep -i "$1";
+	printf "Matches: " && bash -c printenv | grep -i -c "$1";
 }
 
 foo(){ echo "Hello"; }
