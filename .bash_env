@@ -1,4 +1,12 @@
-# Environment variables
+###############################################################################
+# Custom Environment variables
+#
+# Add the following to .bashrc:
+#
+# if [ -f ~/.bash_env ]; then
+#     source ~/.bash_env
+# fi
+###############################################################################
 
 # Set the default editor
 export EDITOR=nano
@@ -8,17 +16,16 @@ export VISUAL='nano'
 #export EDITOR='subl -w'
 #export VISUAL=$EDITOR
 
-#############################
+#######################################################
 # Paths
-#############################
+#
+# uses add_to_path() function defined in .bash_aliases
+#######################################################
 
-#export PATH="$PATH:/home/otto/scripts"
 add_to_path "/home/otto/scripts"
 
-#export PATH="$PATH:/opt/apache-maven-3.6.0/bin"
 add_to_path "/opt/apache-maven-3.6.0/bin"
 
-#export PATH="$PATH:/opt/fuse-7.2.0/bin"
 add_to_path "/opt/fuse-7.2.0/bin"
 
 INSTALL_DIR='opt'
