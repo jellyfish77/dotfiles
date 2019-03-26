@@ -1,3 +1,5 @@
+# Aliases and functions
+
 #git
 #alias g=git
 #When invoked without arguments g will do a short Git status, otherwise it will just pass on the given arguments to the git command. Status is likely to the be Git command one will execute the most, hence this simple enhancement does prove very useful in practice.

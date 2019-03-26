@@ -1,4 +1,4 @@
-# Aliases and functions
+# Environment variables
 
 # Set the default editor
 export EDITOR=nano
