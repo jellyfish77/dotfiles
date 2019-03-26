@@ -55,6 +55,7 @@
 	nb = checkout -b            # create new branch and switch to it
 	f = fetch
 	cl = clean -d -x -f     # remove all untracked files from working directory
+	rf = rm --cached            # remove file from Staging without deleting from working
 	
 	# push all to origin, then prune remote, then prune stale references
 	pap = "!git push --all origin && git push --all --prune && git fetch -p #"

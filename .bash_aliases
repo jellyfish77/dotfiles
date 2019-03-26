@@ -40,6 +40,7 @@ alias h='history'
 alias j='jobs -l'
 alias n='nano'
 alias sn='sudo nano'
+alias t='type'			# show what an alias expands to
 
 alias path='echo -e ${PATH//:/\\n}'
 alias now='date +"%T"'
@@ -80,9 +81,16 @@ alias rm='/bin/rm -i'
 # Can be called as commands in bash
 ######################################
 
+# print environment
 pe() {
 	bash -c printenv | grep -i "$1";
 	printf "Matches: " && bash -c printenv | grep -i -c "$1";
+}
+
+#display ports
+dp() {
+	bash -c 'netstat -tulanp' | grep -i "$1";
+	printf "Matches: " && bash -c 'netstat -tulanp' | grep -i -c "$1";
 }
 
 #reload bash profile
