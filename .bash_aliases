@@ -141,8 +141,8 @@ fch() {
 	#echo $file_path
 	date=$(date -r /tmp/MARK +"%Y-%m-%d %H:%M:%S")
     printf "Files accessed or modified after: $date...\n" | tee "$file_path"
-	sudo find / -path /sys -prune -o -path /proc -prune -o -newercm /tmp/MARK -printf "[Acc: %AY-%Am-%Ad %AH:%AM:%.2AS] [Mod: %TY-%Tm-%Td %TH:%TM:%.2TS] %p\n" | tee -a "$file_path"
-	printf "Log written to '$file_path'\n"
-}  &> /dev/null
+	sudo find / -path /run -prune -o -path /tmp -prune -o -path /sys -prune -o -path /proc -prune -o -newercm /tmp/MARK -printf "[Acc: %AY-%Am-%Ad %AH:%AM:%.2AS] [Mod: %TY-%Tm-%Td %TH:%TM:%.2TS] %p\n" | tee -a "$file_path"
+	printf "Entries written to '$file_path'\n"
+}
 
 foo(){ echo "Hello"; }
