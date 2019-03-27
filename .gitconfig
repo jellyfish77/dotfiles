@@ -96,5 +96,5 @@
 [gui]
 	recentrepo = /home/otto/IBM/IIBT10
 
-
-
+[diff]
+    tool = vimdiff
