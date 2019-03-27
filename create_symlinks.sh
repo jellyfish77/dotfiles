@@ -6,3 +6,4 @@ ln -sf ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -sf ~/.dotfiles/.gitmessage ~/.gitmessage
 ln -sf ~/.dotfiles/.nanorc ~/.nanorc
 ln -sf ~/.dotfiles/.nano ~/.nano
+ln -sf ~/.dotfiles/.vimrc ~/.vimrc
