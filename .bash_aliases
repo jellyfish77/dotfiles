@@ -131,7 +131,18 @@ sfch() {
 
 # find changed files since 
 fch() {
-	sudo find / -path /sys -prune -o -path /proc -prune -o -newercm /tmp/MARK -printf "[Acc: %AY-%Am-%Ad %AH:%AM:%.2AS] [Mod: %TY-%Tm-%Td %TH:%TM:%.2TS] %p\n" 2>&1 | tee ~/logs/$1.log
-}
+	path="$HOME/logs"
+	if (( $# != 1 )); then
+		fn="file-changes"
+	else
+		fn=$1
+	fi
+	file_path="$path/$fn.log"
+	#echo $file_path
+	date=$(date -r /tmp/MARK +"%Y-%m-%d %H:%M:%S")
+    printf "Files accessed or modified after: $date...\n" | tee "$file_path"
+	sudo find / -path /sys -prune -o -path /proc -prune -o -newercm /tmp/MARK -printf "[Acc: %AY-%Am-%Ad %AH:%AM:%.2AS] [Mod: %TY-%Tm-%Td %TH:%TM:%.2TS] %p\n" | tee -a "$file_path"
+	printf "Log written to '$file_path'\n"
+}  &> /dev/null
 
 foo(){ echo "Hello"; }
