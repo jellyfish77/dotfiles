@@ -40,6 +40,8 @@ alias h='history'
 alias j='jobs -l'
 alias n='nano'
 alias sn='sudo nano'
+alias v='vim'
+alias sv='sudo vim'
 alias t='type'			# show what an alias expands to
 
 alias path='echo -e ${PATH//:/\\n}'
