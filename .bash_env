@@ -10,20 +10,17 @@
 
 # Set the default editor
 #export EDITOR='nano'
-#export VISUAL='nano'
-
 export EDITOR='vim'
-export VISUAL='vim'
-
 #export EDITOR=/opt/sublime_text/sublime_text -w -n
 #export EDITOR='subl -w -n'
 #export EDITOR='subl -w'
-#export VISUAL=$EDITOR
+
+export VISUAL=$EDITOR
 
 #######################################################
 # Paths
 #
-# uses add_to_path() function defined in .bash_aliases
+# add_to_path() function is defined in .bash_aliases
 #######################################################
 
 INSTALL_DIR='/opt'
@@ -39,7 +36,7 @@ add_to_path "$INSTALL_DIR/apache-maven-3.6.0/bin"
 add_to_path "$INSTALL_DIR/fuse-7.2.0/bin"
 
 ########################################## 
-# History config...
+# History config
 ##########################################
 
 export HISTTIMEFORMAT="%d/%m/%y %T "

@@ -124,4 +124,14 @@ contains() {
     fi
 }
 
+#start find changes
+sfch() {
+	touch /tmp/MARK	
+}
+
+# find changed files since 
+fch() {
+	sudo find / -path /sys -prune -o -path /proc -prune -o -newercm /tmp/MARK -printf "[Acc: %AY-%Am-%Ad %AH:%AM:%.2AS] [Mod: %TY-%Tm-%Td %TH:%TM:%.2TS] %p\n" 2>&1 | tee ~/logs/$1.log
+}
+
 foo(){ echo "Hello"; }
