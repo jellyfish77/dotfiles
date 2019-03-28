@@ -42,6 +42,7 @@
 	cam = commit -am            # automatically add changes to tracked files (can skip git add .)
 	c-am = commit --amend
 	co = checkout
+	com = checkout master     
 	d = diff                   # show changes to all tracked files
 	ds = diff --staged         # show changes to files in the "staged" area
 	st = status

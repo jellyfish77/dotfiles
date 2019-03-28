@@ -55,7 +55,7 @@ PROMPT_COMMAND='history -a'
 export HISTCONTROL='erasedups:ignoreboth'
 
 # Don't save trivial one and two character commands on the history list
-export HISTIGNORE=?:??
+#export HISTIGNORE=?:??
 
 # extend history
 export HISTFILESIZE=99999
