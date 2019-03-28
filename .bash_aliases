@@ -1,6 +1,8 @@
 # Aliases and functions
 
-# git aliases
+###################################
+# Git aliases
+###################################
 #alias g=git
 # When invoked without arguments g will do a status, otherwise it will 
 # just pass on the given arguments to the git command. Status is likely 
@@ -9,6 +11,11 @@
 #alias g='_f() { if [[ $# == 0 ]]; then git status --short --branch; else git "$@"; fi }; _f'
 alias g='_f() { if [[ $# == 0 ]]; then git status; else git "$@"; fi }; _f'
 complete -o default -o nospace -F _git g
+
+# [g]it [f]ind [e]mpty - search for empty dirs (git will not add to tree)
+alias gfe='find . -type d -empty -not -path "./.git/*" -not -path "./.metadata/*" -not -path "*/target/*"'
+# [g]it [k]eep [e]mpty - add .gitkeep files to all empty dirs to make git to add to tree
+alias gke='find . -type d -empty -not -path "./.git/*" -not -path "./.metadata/*" -not -path "*/target/*"'
 
 #list command
 alias ls='ls --color --classify --human-readable'
