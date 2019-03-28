@@ -15,7 +15,7 @@ complete -o default -o nospace -F _git g
 # [g]it [f]ind [e]mpty - search for empty dirs (git will not add to tree)
 alias gfe='find . -type d -empty -not -path "./.git/*" -not -path "./.metadata/*" -not -path "*/target/*"'
 # [g]it [k]eep [e]mpty - add .gitkeep files to all empty dirs to make git to add to tree
-alias gke='find . -type d -empty -not -path "./.git/*" -not -path "./.metadata/*" -not -path "*/target/*"'
+alias gke='find . -type d -empty -not -path "./.git/*" -not -path "./.metadata/*" -not -path "*/target/*" -exec touch {}/.gitkeep \;'
 
 #list command
 alias ls='ls --color --classify --human-readable'
