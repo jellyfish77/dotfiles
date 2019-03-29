@@ -23,7 +23,7 @@ export VISUAL=$EDITOR
 # add_to_path() function is defined in .bash_aliases
 #######################################################
 
-printf "Setting common environment variables..."
+printf "Setting common environment variables... "
 
 INSTALL_DIR='/opt'
 add_to_path "$INSTALL_DIR/apache-activemq-5.15.8/bin"
@@ -32,22 +32,21 @@ add_to_path "$HOME/scripts"
 printf "Done\n"
 
 # Host specific variables
-printf "Setting environment variables for "
+printf "Setting environment variables for %s... " "$(hostname)"
 
 case $(hostname -s) in
 	mint-dev) 
-		printf "%s..." "$(hostname)"
 		export JAVA_HOME="$INSTALL_DIR/java/current"
 		add_to_path "$INSTALL_DIR/fuse-7.2.0/bin"
 		add_to_path "$INSTALL_DIR/apache-maven-3.6.0/bin"
 		;;
 	suse-server) 
 		IIB_DIR='/iib-10.0.0.7'
+		# Source the mqsiprofile to set up env variables to run IIB mqsi* commands
+		. mqsiprofile
 		add_to_path "$INSTALL_DIR$IIB_DIR"
 		add_to_path "$INSTALL_DIR$IIB_DIR/server/bin"
 		add_to_path "$INSTALL_DIR$IIB_DIR/server/lib"
-		# Source the mqsiprofile to set up env variables to run IIB mqsi* commands
-		. mqsiprofile
 		ODBC_VAR_DIR="$INSTALL_DIR$IIB_DIR/ie02/etc"
 		export ODBCINI="$ODBC_VAR_DIR/odbc.ini"
 		export ODBCSYSINI="$ODBC_VAR_DIR"
