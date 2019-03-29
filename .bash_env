@@ -23,17 +23,38 @@ export VISUAL=$EDITOR
 # add_to_path() function is defined in .bash_aliases
 #######################################################
 
+printf "Setting common environment variables..."
+
 INSTALL_DIR='/opt'
-
-export JAVA_HOME="$INSTALL_DIR/java/current"
-
 add_to_path "$INSTALL_DIR/apache-activemq-5.15.8/bin"
-
 add_to_path "$HOME/scripts"
 
-add_to_path "$INSTALL_DIR/apache-maven-3.6.0/bin"
+printf "Done\n"
 
-add_to_path "$INSTALL_DIR/fuse-7.2.0/bin"
+# Host specific variables
+printf "Setting environment variables for "
+
+case $(hostname -s) in
+	mint-dev) 
+		printf "%s..." "$(hostname)"
+		export JAVA_HOME="$INSTALL_DIR/java/current"
+		add_to_path "$INSTALL_DIR/fuse-7.2.0/bin"
+		add_to_path "$INSTALL_DIR/apache-maven-3.6.0/bin"
+		;;
+	suse-server) 
+		IIB_DIR='/iib-10.0.0.7'
+		add_to_path "$INSTALL_DIR$IIB_DIR"
+		add_to_path "$INSTALL_DIR$IIB_DIR/server/bin"
+		add_to_path "$INSTALL_DIR$IIB_DIR/server/lib"
+		# Source the mqsiprofile to set up env variables to run IIB mqsi* commands
+		. mqsiprofile
+		ODBC_VAR_DIR="$INSTALL_DIR$IIB_DIR/ie02/etc"
+		export ODBCINI="$ODBC_VAR_DIR/odbc.ini"
+		export ODBCSYSINI="$ODBC_VAR_DIR"
+		;;
+esac
+
+printf "Done\n"
 
 ########################################## 
 # History config
