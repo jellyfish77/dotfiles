@@ -82,8 +82,32 @@ export HISTCONTROL='erasedups:ignoreboth'
 export HISTFILESIZE=99999
 export HISTSIZE=99999
 
+##########################################
+# Seafly Prompt config
+##########################################
 
-
+#seafly prompt, see: https://github.com/bluz71/bash-seafly-prompt
+export SEAFLY_SHOW_USER=0
+#export SEAFLY_PROMPT_SYMBOL=">"
+#export SEAFLY_PS2_PROMPT_SYMBOL=">"
+#export SEAFLY_GIT_PREFIX="("
+#export SEAFLY_GIT_SUFFIX=")"
+#export SEAFLY_GIT_DIRTY="*"
+#export SEAFLY_GIT_STASH="$"
+#export SEAFLY_GIT_AHEAD=">"
+#export SEAFLY_GIT_BEHIND="<"
+#export SEAFLY_GIT_DIVERGED="<>"
+export SEAFLY_NORMAL_COLOR="$(tput bold; tput setaf 63)"
+export SEAFLY_ALERT_COLOR="$(tput bold; tput setaf 202)"
+export SEAFLY_HOST_COLOR="$(tput bold; tput setaf 242)"
+#export SEAFLY_GIT_COLOR="$(tput bold; tput setaf 99)"
+export SEAFLY_GIT_COLOR="$(tput bold; tput setaf 4)"
+#export SEAFLY_PATH_COLOR="$(tput bold; tput setaf 70)"
+export SEAFLY_PATH_COLOR="$(tput bold; tput setaf 3)"
+export PROMPT_DIRTRIM=1
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUPSTREAM=1
 
 
 
