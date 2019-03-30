@@ -39,6 +39,7 @@ case $(hostname -s) in
 		export JAVA_HOME="$INSTALL_DIR/java/current"
 		add_to_path "$INSTALL_DIR/fuse-7.2.0/bin"
 		add_to_path "$INSTALL_DIR/apache-maven-3.6.0/bin"
+		export MAVEN_OPTS="-Xms256m -Xmx1024m -XX:MaxPermSize=256M"
 		;;
 	suse-server) 
 		IIB_DIR='/iib-10.0.0.7'
