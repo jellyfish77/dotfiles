@@ -27,6 +27,8 @@ alias llt='ls -la --sort=time'
 #list files larger than x bytes, e.g. llfs +10k
 alias llfs='_f(){ find . -type f -size "$1" -exec ls --color --classify --human-readable -l {} \; ; }; _f'
 
+alias t='tree -a'
+
 #easy nav
 alias -- -='cd -'   # toggle between current and last dir (-)
 alias ..='cd ..'
