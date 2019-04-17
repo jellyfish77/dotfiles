@@ -18,7 +18,7 @@ export EDITOR='vim'
 export VISUAL=$EDITOR
 
 #######################################################
-# Paths
+# Set up Application Environment Variables
 #
 # add_to_path() function is defined in .bash_aliases
 #######################################################
@@ -55,8 +55,6 @@ if [ -d "$IIB_DIR" ]; then
 	add_to_path "$IIB_DIR/server/bin"	
 	add_to_path "$IIB_DIR/server/lib"	
 	ODBC_VAR_DIR="$IIB_DIR/ie02/etc"
-	#export ODBCSYSINI="$ODBC_VAR_DIR"	
-	#export ODBCINI="$ODBC_VAR_DIR/odbc.ini"
 	export_var ODBCSYSINI $ODBC_VAR_DIR
 	export_var ODBCINI "$ODBC_VAR_DIR/odbc.ini"
 fi
