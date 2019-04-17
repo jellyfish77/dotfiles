@@ -23,38 +23,43 @@ export VISUAL=$EDITOR
 # add_to_path() function is defined in .bash_aliases
 #######################################################
 
-printf "Setting common environment variables... "
-
 INSTALL_DIR='/opt'
-add_to_path "$INSTALL_DIR/apache-activemq-5.15.8/bin"
-add_to_path "$HOME/scripts"
+ACTIVEMQ_DIR="$INSTALL_DIR/apache-activemq-5.15.8"
+FUSE_DIR="$INSTALL_DIR/fuse-7.2.0"
+MAVEN_DIR="$INSTALL_DIR/apache-maven-3.6.0"
+JAVA_CURRENT_DIR="$INSTALL_DIR/java/current"
+IIB_DIR="$INSTALL_DIR/iib-10.0.0.7"
 
-printf "Done\n"
+if [ -d "$HOME/scripts" ]; then	
+	add_to_path "$HOME/scripts"
+fi
 
-# Host specific variables
-printf "Setting environment variables for %s... " "$(hostname)"
+if [ -d "$JAVA_CURRENT_DIR" ]; then	
+	export_var JAVA_HOME $JAVA_CURRENT_DIR
+fi
 
-case $(hostname -s) in
-	mint-dev) 
-		export JAVA_HOME="$INSTALL_DIR/java/current"
-		add_to_path "$INSTALL_DIR/fuse-7.2.0/bin"
-		add_to_path "$INSTALL_DIR/apache-maven-3.6.0/bin"
-		#export MAVEN_OPTS="-Xms256m -Xmx1024m -XX:MaxPermSize=256M"
-		;;
-	suse-server) 
-		IIB_DIR='/iib-10.0.0.7'
-		# Source the mqsiprofile to set up env variables to run IIB mqsi* commands
-		. mqsiprofile
-		add_to_path "$INSTALL_DIR$IIB_DIR"
-		add_to_path "$INSTALL_DIR$IIB_DIR/server/bin"
-		add_to_path "$INSTALL_DIR$IIB_DIR/server/lib"
-		ODBC_VAR_DIR="$INSTALL_DIR$IIB_DIR/ie02/etc"
-		export ODBCINI="$ODBC_VAR_DIR/odbc.ini"
-		export ODBCSYSINI="$ODBC_VAR_DIR"
-		;;
-esac
+if [ -d "$ACTIVEMQ_DIR" ]; then	
+	add_to_path "$ACTIVEMQ_DIR/bin"
+fi
 
-printf "Done\n"
+if [ -d "$FUSE_DIR" ]; then
+	add_to_path "$FUSE_DIR/bin"
+fi
+
+if [ -d "$MAVEN_DIR" ]; then	
+	add_to_path "$MAVEN_DIR/bin"
+fi
+
+if [ -d "$IIB_DIR" ]; then	
+	add_to_path "$IIB_DIR"
+	add_to_path "$IIB_DIR/server/bin"	
+	add_to_path "$IIB_DIR/server/lib"	
+	ODBC_VAR_DIR="$IIB_DIR/ie02/etc"
+	#export ODBCSYSINI="$ODBC_VAR_DIR"	
+	#export ODBCINI="$ODBC_VAR_DIR/odbc.ini"
+	export_var ODBCSYSINI $ODBC_VAR_DIR
+	export_var ODBCINI "$ODBC_VAR_DIR/odbc.ini"
+fi
 
 ########################################## 
 # History config

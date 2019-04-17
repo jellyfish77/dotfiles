@@ -109,18 +109,36 @@ rl() {
 	. ~/.profile
 }
 
-# Add a string to the PATH
+# Add a string to the PATH (if not already in PATH)
 add_to_path() {
+	printf "Adding dir to PATH: \'$1\'... "
 	if contains "$PATH" "$1"
 	then
 		:
-		#echo "$1 already in PATH"
+		printf "[Already in PATH]\n"
 	else
-		#echo "Adding $1 to PATH..."
 		export PATH=$PATH:$1
+		printf "Done.\n"
 	fi
 }
 alias atp='add_to_path'
+
+# set and export an environment variable (if not already set to value)
+# params:
+# $1 = variable name
+# $2 = value to set
+export_var() {
+	varname=$1
+	printf "Setting $varname to: \'$2\'... "
+	if contains ${!varname} $2
+	then
+		:
+		printf "[Already set]\n"
+	else
+		export $1=$2
+		printf "Done.\n"
+	fi
+}
 
 contains() {
     string="$1"

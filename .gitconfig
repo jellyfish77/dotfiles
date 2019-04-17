@@ -60,6 +60,7 @@
 	cl = clean -d -x -f     # remove all untracked files from working directory
 	rfc = rm --cached            # remove file from Staging without deleting from working
 	m = merge
+	gr=grep --ignore-case -n
 	
 	# fetch with notes
 	fn = "!git fetch && git fetch origin refs/notes/commits:refs/notes/commits && git fetch origin "refs/notes/*:refs/notes/*""
