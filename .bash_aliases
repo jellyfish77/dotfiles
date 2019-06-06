@@ -18,6 +18,7 @@ alias gfe='find . -type d -empty -not -path "./.git/*" -not -path "./.metadata/*
 alias gke='find . -type d -empty -not -path "./.git/*" -not -path "./.metadata/*" -not -path "*/target/*" -exec touch {}/.gitkeep \;'
 
 #list command
+alias l='ls -la | grep "^d" && ls -la | grep "^-" && ls -la | grep "^l"'
 alias ls='ls --color --classify --human-readable'
 alias ll='ls -l'
 #alias ll='ls -al --color=auto'
@@ -27,7 +28,9 @@ alias llt='ls -la --sort=time'
 #list files larger than x bytes, e.g. llfs +10k
 alias llfs='_f(){ find . -type f -size "$1" -exec ls --color --classify --human-readable -l {} \; ; }; _f'
 
-alias t='tree -a'
+alias tt='tree'
+alias ta='tree -alpugifhDFC'
+
 
 #easy nav
 alias -- -='cd -'   # toggle between current and last dir (-)

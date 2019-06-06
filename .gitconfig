@@ -18,10 +18,10 @@
     ui = true
   
 [alias]
-    # OQ - from: https://stackoverflow.com/questions/1838873/visualizing-branch-topology-in-git/34467298#34467298
+	lf = !"git l --invert-grep --grep '#wip' --grep '#irrelevant'"	# filter out #wip and #irrelevant entries
 	l1 = !"git l --since=1.weeks"
 	l4 = !"git l --since=4.weeks"
-	l = !"git lg -70"
+	l = !"git lg -90"
 	lg = !"git lg1"
 	lg1 = !"git lg1-specific --all"
 	lg2 = !"git lg2-specific --all"
@@ -39,9 +39,7 @@
 	us = reset                  # (u)n(s)tage - remove all changes from staging, leaves working directory unchanged
 	b = branch -a -vv           # list all (b)ranches
 	ub = branch --no-merged master   # list all (u)merged (b)ranchnes (onto master)
-	c = commit -av              # verbose - will show diff in text editor for commit message
-	#c = commit
-	cam = commit -am            # automatically add changes to tracked files (can skip git add .)
+	c = commit -av              # austomatically stage modified and deleted files (but not new files), then commit; verbose - will show diff in text editor for commit message
 	c-am = commit --amend
 	co = checkout
 	com = checkout master     
@@ -60,7 +58,8 @@
 	cl = clean -d -x -f     # remove all untracked files from working directory
 	rfc = rm --cached            # remove file from Staging without deleting from working
 	m = merge
-	gr=grep --ignore-case -n
+	gr = grep --ignore-case -n
+	sz = count-objects -v
 	
 	# fetch with notes
 	fn = "!git fetch && git fetch origin refs/notes/commits:refs/notes/commits && git fetch origin "refs/notes/*:refs/notes/*""
