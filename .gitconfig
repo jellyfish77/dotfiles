@@ -1,6 +1,6 @@
 [url "https://jellyfish77@github.com"]
 	insteadOf = https://github.com
-	
+
 [user]
 	email = "jellyfish77@gmx.com"
 	name = jellyfish77
@@ -10,18 +10,18 @@
 
 [cola]
 	spellcheck = false
-  
+
 [color]
     diff = auto
     status = auto
     branch = auto
     ui = true
-  
+
 [alias]
 	lf = !"git l --invert-grep --grep '#wip' --grep '#irrelevant'"	# filter out #wip and #irrelevant entries
 	l1 = !"git l --since=1.weeks"
 	l4 = !"git l --since=4.weeks"
-	l = !"git lg -90"
+	l = !"git lg -80"
 	lg = !"git lg1"
 	lg1 = !"git lg1-specific --all"
 	lg2 = !"git lg2-specific --all"
@@ -42,11 +42,12 @@
 	c = commit -av              # austomatically stage modified and deleted files (but not new files), then commit; verbose - will show diff in text editor for commit message
 	c-am = commit --amend
 	co = checkout
-	com = checkout master     
+	com = checkout master
 	d = diff                   # show changes to all tracked files
 	ds = diff --staged         # show changes to files in the "staged" area
 	st = status
 	sa = stash
+	m = merge
 	mt = mergetool
 	cp = cherry-pick
 	pl = pull --rebase
@@ -56,24 +57,23 @@
 	nb = checkout -b            # create new branch and switch to it
 	f = fetch
 	cl = clean -d -x -f     # remove all untracked files from working directory
-	rfc = rm --cached            # remove file from Staging without deleting from working
-	m = merge
+	rfc = rm --cached            # remove file from Staging without deleting from working	
 	gr = grep --ignore-case -n
 	sz = count-objects -v
-	
+
 	# fetch with notes
 	fn = "!git fetch && git fetch origin refs/notes/commits:refs/notes/commits && git fetch origin "refs/notes/*:refs/notes/*""
-	
+
 	# push all to origin, then prune remote, then prune stale references
 	pap = "!git push --all origin && git push --all --prune && git fetch -p #"
 	# push with notes
 	papn = "!git push --all origin && git push origin refs/notes/commits && git push origin "refs/notes/*" && git push --all --prune && git fetch -p #"
-	
+
 	# Reset HARD - will update all trees to <commit #> (defaults to HEAD) of current branch (working, index and commit history)
 	# Usage:
 	#  resh <commit> (where commit defaults to HEAD)
 	resh = reset --hard
-	
+
 	# Update - git reset --hard does the same thing
 	# Reset (Completely destory working directory and reset from branch)
 	# * switch to a branch <version or branch>
@@ -85,10 +85,10 @@
 	res = "!git checkout -- . && git co \"$1\" && git reset HEAD && git clean -d -x -f && git st #"
 	#res = "!f() { git co \"$1\" && git reset HEAD && git clean -d -x -f && git st; }; f"
 	#res = !sh -c 'git clean -df && git checkout -- . && git co $1 && git reset HEAD && git clean -d -x -f && git st;' -
-	
+
 	# Show all files changed by the last commit on current branch
 	chg = diff --name-only HEAD^ HEAD
-    
+
 [credential]
 	helper = cache --timeout=28800
 

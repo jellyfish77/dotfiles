@@ -8,7 +8,7 @@
 # fi
 ###############################################################################
 
-# Set the default editor
+# Set the default editors (EDITOR for old terminals, VISUAL for "advanced" terminals)
 #export EDITOR='nano'
 export EDITOR='vim'
 #export EDITOR=/opt/sublime_text/sublime_text -w -n
@@ -30,15 +30,15 @@ MAVEN_DIR="$INSTALL_DIR/apache-maven-3.6.0"
 JAVA_CURRENT_DIR="$INSTALL_DIR/java/current"
 IIB_DIR="$INSTALL_DIR/iib-10.0.0.7"
 
-if [ -d "$HOME/scripts" ]; then	
+if [ -d "$HOME/scripts" ]; then
 	add_to_path "$HOME/scripts"
 fi
 
-if [ -d "$JAVA_CURRENT_DIR" ]; then	
+if [ -d "$JAVA_CURRENT_DIR" ]; then
 	export_var JAVA_HOME $JAVA_CURRENT_DIR
 fi
 
-if [ -d "$ACTIVEMQ_DIR" ]; then	
+if [ -d "$ACTIVEMQ_DIR" ]; then
 	add_to_path "$ACTIVEMQ_DIR/bin"
 fi
 
@@ -46,20 +46,20 @@ if [ -d "$FUSE_DIR" ]; then
 	add_to_path "$FUSE_DIR/bin"
 fi
 
-if [ -d "$MAVEN_DIR" ]; then	
+if [ -d "$MAVEN_DIR" ]; then
 	add_to_path "$MAVEN_DIR/bin"
 fi
 
-if [ -d "$IIB_DIR" ]; then	
+if [ -d "$IIB_DIR" ]; then
 	add_to_path "$IIB_DIR"
-	add_to_path "$IIB_DIR/server/bin"	
-	add_to_path "$IIB_DIR/server/lib"	
+	add_to_path "$IIB_DIR/server/bin"
+	add_to_path "$IIB_DIR/server/lib"
 	ODBC_VAR_DIR="$IIB_DIR/ie02/etc"
 	export_var ODBCSYSINI $ODBC_VAR_DIR
 	export_var ODBCINI "$ODBC_VAR_DIR/odbc.ini"
 fi
 
-########################################## 
+##########################################
 # History config
 ##########################################
 
@@ -111,7 +111,3 @@ export PROMPT_DIRTRIM=2
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUPSTREAM=1
-
-
-
-
