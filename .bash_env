@@ -50,7 +50,6 @@ if [ -d "$MAVEN_DIR" ]; then
 	add_to_path "$MAVEN_DIR/bin"
 fi
 
-# IIB
 if [ -d "$IIB_DIR" ]; then
 	add_to_path "$IIB_DIR"
 	add_to_path "$IIB_DIR/server/bin"
@@ -58,9 +57,8 @@ if [ -d "$IIB_DIR" ]; then
 	ODBC_VAR_DIR="$IIB_DIR/ie02/etc"
 	export_var ODBCSYSINI $ODBC_VAR_DIR
 	export_var ODBCINI "$ODBC_VAR_DIR/odbc.ini"
+	. mqsiprofile
 fi
-
-. mqsiprofile
 
 ##########################################
 # History config
