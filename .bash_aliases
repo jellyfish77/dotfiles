@@ -112,7 +112,7 @@ rl() {
 	. ~/.profile
 }
 
-# Add a string to the PATH (if not already in PATH)
+# Add a dir (string) to the PATH (if not already in PATH)
 add_to_path() {
 	printf "Adding dir to PATH: \'$1\'... "
 	if contains "$PATH" "$1"

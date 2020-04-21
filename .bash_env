@@ -30,6 +30,7 @@ MAVEN_DIR="$INSTALL_DIR/apache-maven-3.6.0"
 JAVA_CURRENT_DIR="$INSTALL_DIR/java/current"
 IIB_DIR="$INSTALL_DIR/iib-10.0.0.7"
 
+#if dir exists
 if [ -d "$HOME/scripts" ]; then
 	add_to_path "$HOME/scripts"
 fi
