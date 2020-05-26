@@ -24,6 +24,10 @@ export VISUAL=$EDITOR
 #######################################################
 
 # Set the following in .bashrc to values for current system:
+#
+# E.g.:
+#
+# SCRIPTS_DIR="$HOME/scripts"
 # INSTALL_DIR='/opt'
 # ACTIVEMQ_DIR="$INSTALL_DIR/apache-activemq-5.15.8"
 # FUSE_DIR="$INSTALL_DIR/fuse-7.2.0"
@@ -31,28 +35,46 @@ export VISUAL=$EDITOR
 # JAVA_CURRENT_DIR="$INSTALL_DIR/java/current"
 # IIB_DIR="$INSTALL_DIR/iib-10.0.0.7"
 
+printf "Adding custom directories to $PATH...\n"
+
 #if dir exists
-if [ -d "$HOME/scripts" ]; then
-	add_to_path "$HOME/scripts"
+if [ -d "$HOME/scripts" ]
+then
+   	add_to_path "$HOME/scripts"
+else
+    printf "Dir does not exist: \'$SCRIPTS_DIR'\n"	
 fi
 
-if [ -d "$JAVA_CURRENT_DIR" ]; then
+if [ -d "$JAVA_CURRENT_DIR" ]
+then
 	export_var JAVA_HOME $JAVA_CURRENT_DIR
+else
+    printf "Dir does not exist: \'$JAVA_CURRENT_DIR'\n"	
 fi
 
-if [ -d "$ACTIVEMQ_DIR" ]; then
+if [ -d "$ACTIVEMQ_DIR" ]
+then
 	add_to_path "$ACTIVEMQ_DIR/bin"
+else
+    printf "Dir does not exist: \'$ACTIVEMQ_DIR'\n"	
 fi
 
-if [ -d "$FUSE_DIR" ]; then
+if [ -d "$FUSE_DIR" ]
+then
 	add_to_path "$FUSE_DIR/bin"
+else
+    printf "Dir does not exist: \'$FUSE_DIR'\n"	
 fi
 
-if [ -d "$MAVEN_DIR" ]; then
+if [ -d "$MAVEN_DIR" ]
+then
 	add_to_path "$MAVEN_DIR/bin"
+else
+    printf "Dir does not exist: \'$MAVEN_DIR'\n"	
 fi
 
-if [ -d "$IIB_DIR" ]; then
+if [ -d "$IIB_DIR" ]
+then
 	add_to_path "$IIB_DIR"
 	add_to_path "$IIB_DIR/server/bin"
 	add_to_path "$IIB_DIR/server/lib"
@@ -60,6 +82,8 @@ if [ -d "$IIB_DIR" ]; then
 	export_var ODBCSYSINI $ODBC_VAR_DIR
 	export_var ODBCINI "$ODBC_VAR_DIR/odbc.ini"
 	. mqsiprofile
+else
+    printf "Dir does not exist: \'$IIB_DIR'\n"	
 fi
 
 ##########################################
