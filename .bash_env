@@ -23,12 +23,13 @@ export VISUAL=$EDITOR
 # add_to_path() function is defined in .bash_aliases
 #######################################################
 
-INSTALL_DIR='/opt'
-ACTIVEMQ_DIR="$INSTALL_DIR/apache-activemq-5.15.8"
-FUSE_DIR="$INSTALL_DIR/fuse-7.2.0"
-MAVEN_DIR="$INSTALL_DIR/apache-maven-3.6.0"
-JAVA_CURRENT_DIR="$INSTALL_DIR/java/current"
-IIB_DIR="$INSTALL_DIR/iib-10.0.0.7"
+# Set the following in .bashrc to values for current system:
+# INSTALL_DIR='/opt'
+# ACTIVEMQ_DIR="$INSTALL_DIR/apache-activemq-5.15.8"
+# FUSE_DIR="$INSTALL_DIR/fuse-7.2.0"
+# MAVEN_DIR="$INSTALL_DIR/apache-maven-3.6.0"
+# JAVA_CURRENT_DIR="$INSTALL_DIR/java/current"
+# IIB_DIR="$INSTALL_DIR/iib-10.0.0.7"
 
 #if dir exists
 if [ -d "$HOME/scripts" ]; then
