@@ -1,8 +1,11 @@
 # Aliases and functions
 
-###################################
+########################################################################
+#
 # Git aliases
-###################################
+#
+########################################################################
+
 #alias g=git
 # When invoked without arguments g will do a status, otherwise it will 
 # just pass on the given arguments to the git command. Status is likely 
@@ -17,6 +20,13 @@ alias gfe='find . -type d -empty -not -path "./.git/*" -not -path "./.metadata/*
 # [g]it [k]eep [e]mpty - add .gitkeep files to all empty dirs to make git to add to tree
 alias gke='find . -type d -empty -not -path "./.git/*" -not -path "./.metadata/*" -not -path "*/target/*" -exec touch {}/.gitkeep \;'
 
+
+########################################################################
+#
+# Command Aliases
+#
+########################################################################
+
 #list command
 alias l='ls -la | grep "^d" && ls -la | grep "^-" && ls -la | grep "^l"'
 alias ls='ls --color --classify --human-readable'
@@ -30,7 +40,6 @@ alias llfs='_f(){ find . -type f -size "$1" -exec ls --color --classify --human-
 
 alias tt='tree'
 alias ta='tree -alpugifhDFC'
-
 
 #easy nav
 alias -- -='cd -'   # toggle between current and last dir (-)
@@ -89,11 +98,17 @@ alias cp='/bin/cp -i'
 alias mv='/bin/mv -i'
 alias rm='/bin/rm -i'
 
-######################################
-# Functions
+alias ks='kill -9' #  send kill signal to process id, e.g. ks 3301 (kill cannot be intercepted; it will pulll the plug on a process)
+alias kt='kill -15' # send terminate signal to process id, e.g. kt 3301 (terminate can be intercepted, allowing process to shutdown gracefully)
+
+
+########################################################################
+#
+# Function Definitions
 #
 # Can be called as commands in bash
-######################################
+#
+########################################################################
 
 # print environment
 pe() {
