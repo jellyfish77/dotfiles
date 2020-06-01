@@ -95,11 +95,12 @@
 	#
 	####################################################################
 	
-	dp = diff --name-only HEAD^ HEAD	# list changed files in the last commit relative to the commit before that 
+	dpl = diff --name-only HEAD^ HEAD	# list changed files in the last commit relative to the commit before that 
+	dp = diff HEAD^ HEAD				# show changes to files in the last commit relative to the commit before that 
+	cm = commit -m
 	c = commit -av              		# automatically add modified and deleted files to the Index then commit to respository; verbose - will show diff in text editor for commit message
 	c-am = commit --amend
-	cm = commit -m
-	
+
 	
 	####################################################################
 	# Branching
