@@ -111,17 +111,18 @@
 	b = branch -a -vv           	# list all (b)ranch pointers
 	ub = branch --no-merged master  # list all (u)merged (b)ranchnes (onto master)
 	db = branch -d             		# delete branch
-	nb = checkout -b            	# create new branch and switch to it
+	nb = checkout -b            	# create new branch and switch to it; doesn't affect Working Tree or Index?
+
+
+	####################################################################
+	# Merging
+	####################################################################
+	ms = "!f(){ git checkout master && git merge --squash \"$1\" && git commit; };f"	# squash merge <commit> onto master brach, e.g. "g ms test"
 	m = merge
 	mt = mergetool
 
 
-	####################################################################
-	# Committing Files from Index (or directly from Working Tree)
-	####################################################################
-
 	sa = stash
-
 	cp = cherry-pick
 	pl = pull --rebase
 	ss = show --stat            	# show the details of commit defaulting to last commit, e.g. "g ss", "g ss <tag>", "g ss <branch>" etc
