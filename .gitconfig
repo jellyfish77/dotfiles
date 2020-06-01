@@ -98,7 +98,7 @@
 	dp = diff HEAD^ HEAD				# show changes to files in the last commit relative to the commit before that
 	cm = commit -m
 	c = commit -av              		# automatically add modified and deleted files to the Index then commit to respository; verbose - will show diff in text editor for commit message
-	c-am = commit --amend
+	ca = commit --amend					# update comment on last commit
 
 
 	####################################################################
@@ -110,7 +110,7 @@
 
 	b = branch -a -vv           	# list all (b)ranch pointers
 	ub = branch --no-merged master  # list all (u)merged (b)ranchnes (onto master)
-	db = branch -d             		# delete branch
+	db = branch -D             		# delete branch even if not merged
 	nb = checkout -b            	# create new branch and switch to it; doesn't affect Working Tree or Index?
 
 
