@@ -38,8 +38,7 @@ alias llt='ls -la --sort=time'
 #list files larger than x bytes, e.g. llfs +10k
 alias llfs='_f(){ find . -type f -size "$1" -exec ls --color --classify --human-readable -l {} \; ; }; _f'
 
-alias tt='tree'
-alias ta='tree -alpugifhDFC'
+alias tt='tree -alpugifhDFC'
 
 #easy nav
 alias -- -='cd -'   # toggle between current and last dir (-)
@@ -127,36 +126,24 @@ rl() {
 	. ~/.profile
 }
 
-# Add a dir (string) to the PATH (if not already in PATH)
-add_to_path() {
-	printf "Adding dir to PATH: \'$1\'... "
-	if contains "$PATH" "$1"
-	then
-		:
-		printf "[Already in PATH]\n"
-	else
-		export PATH=$PATH:$1
-		printf "Done.\n"
-	fi
+# Add dir (string) to the PATH if not already in PATH AND dir exists
+# Note that PATH should already be marked as exported, so reexporting is not needed
+# $1 = dir to add to path
+pathadd() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        PATH="${PATH:+"$PATH:"}$1"
+    fi
 }
-alias atp='add_to_path'
 
-# set and export an environment variable (if not already set to value)
-# params:
-# $1 = variable name
-# $2 = value to set
-export_var() {
-	varname=$1
-	printf "Setting $varname to: \'$2\'... "
-	if contains ${!varname} $2
-	then
-		:
-		printf "[Already set]\n"
-	else
+# set env variable to dir IF dir exists
+# $1 = env var 
+# $2 = dir
+setenv() {
+	if [ -d "$2" ]; then
 		export $1=$2
-		printf "Done.\n"
 	fi
 }
+
 
 contains() {
     string="$1"
@@ -186,7 +173,7 @@ fch() {
 	#echo $file_path
 	date=$(date -r /tmp/MARK +"%Y-%m-%d %H:%M:%S")
     printf "Files accessed or modified after: $date...\n" | tee "$file_path"
-	sudo find / -path /run -prune -o -path /tmp -prune -o -path /sys -prune -o -path /proc -prune -o -newercm /tmp/MARK -printf "[Acc: %AY-%Am-%Ad %AH:%AM:%.2AS] [Mod: %TY-%Tm-%Td %TH:%TM:%.2TS] %p\n" | tee -a "$file_path"
+	sudo find / -path /var/cache -prune -o -path /run -prune -o -path /tmp -prune -o -path /sys -prune -o -path /proc -prune -o -newercm /tmp/MARK -printf "[Acc: %AY-%Am-%Ad %AH:%AM:%.2AS] [Mod: %TY-%Tm-%Td %TH:%TM:%.2TS] %p\n" | tee -a "$file_path"
 	printf "Entries written to '$file_path'\n"
 }
 

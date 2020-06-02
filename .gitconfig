@@ -117,7 +117,7 @@
 	####################################################################
 	# Merging
 	####################################################################
-	ms = "!f(){ git checkout master && git merge --squash \"$1\" && git commit; };f"	# squash merge <commit> onto master brach, e.g. "g ms test"
+	ms = "!f(){ git checkout master && git merge --squash \"$1\" && git commit; };f"	# squash merge <commit> onto master brach, e.g. "g ms <non master branch>"
 	m = merge
 	mt = mergetool
 

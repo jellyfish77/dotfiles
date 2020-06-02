@@ -1,5 +1,5 @@
 ###############################################################################
-# Custom Environment variables
+# Common Bash Environment - for all VMs
 #
 # Add the following to .bashrc:
 #
@@ -9,85 +9,25 @@
 ###############################################################################
 
 # Set the default editors (EDITOR for old terminals, VISUAL for "advanced" terminals)
-#export EDITOR='nano'
-export EDITOR='vim'
+export EDITOR='nano'
+#export EDITOR='vim'
 #export EDITOR=/opt/sublime_text/sublime_text -w -n
 #export EDITOR='subl -w -n'
 #export EDITOR='subl -w'
 
 export VISUAL=$EDITOR
 
-#######################################################
-# Set up Application Environment Variables
-#
-# add_to_path() function is defined in .bash_aliases
-#######################################################
+SCRIPTS_DIR="$HOME/scripts"
+INSTALL_DIR='/opt'
 
-# Set the following in .bashrc to values for current system:
-#
-# E.g.:
-#
-# SCRIPTS_DIR="$HOME/scripts"
-# INSTALL_DIR='/opt'
-# ACTIVEMQ_DIR="$INSTALL_DIR/apache-activemq-5.15.8"
-# FUSE_DIR="$INSTALL_DIR/fuse-7.2.0"
-# MAVEN_DIR="$INSTALL_DIR/apache-maven-3.6.0"
-# JAVA_CURRENT_DIR="$INSTALL_DIR/java/current"
-# IIB_DIR="$INSTALL_DIR/iib-10.0.0.7"
+# add dirs to path variable
+pathadd "$SCRIPTS_DIR"
+pathadd "$SCRIPTS_DIR/performance"
+pathadd "$SCRIPTS_DIR/sysinfo"
+pathadd "$SCRIPTS_DIR/launchers"
 
-printf "Exporting JAVA_HOME...\n"
-
-
-if [ -d "$JAVA_CURRENT_DIR" ]
-then
-	export_var JAVA_HOME $JAVA_CURRENT_DIR
-else
-    printf "Dir does not exist: \'$JAVA_CURRENT_DIR'\n"	
-fi
-
-printf "Adding custom directories to $PATH...\n"
-
-#if dir exists
-if [ -d "$HOME/scripts" ]
-then
-   	add_to_path "$HOME/scripts"
-else
-    printf "Dir does not exist: \'$SCRIPTS_DIR'\n"	
-fi
-
-if [ -d "$ACTIVEMQ_DIR" ]
-then
-	add_to_path "$ACTIVEMQ_DIR/bin"
-else
-    printf "Dir does not exist: \'$ACTIVEMQ_DIR'\n"	
-fi
-
-if [ -d "$FUSE_DIR" ]
-then
-	add_to_path "$FUSE_DIR/bin"
-else
-    printf "Dir does not exist: \'$FUSE_DIR'\n"	
-fi
-
-if [ -d "$MAVEN_DIR" ]
-then
-	add_to_path "$MAVEN_DIR/bin"
-else
-    printf "Dir does not exist: \'$MAVEN_DIR'\n"	
-fi
-
-if [ -d "$IIB_DIR" ]
-then
-	add_to_path "$IIB_DIR"
-	add_to_path "$IIB_DIR/server/bin"
-	add_to_path "$IIB_DIR/server/lib"
-	ODBC_VAR_DIR="$IIB_DIR/ie02/etc"
-	export_var ODBCSYSINI $ODBC_VAR_DIR
-	export_var ODBCINI "$ODBC_VAR_DIR/odbc.ini"
-	. mqsiprofile
-else
-    printf "Dir does not exist: \'$IIB_DIR'\n"	
-fi
+# add dirs to other env variables
+#setenv 'GOOBER' '/home'
 
 ##########################################
 # History config
