@@ -121,7 +121,7 @@ dp() {
 	printf "Matches: " && bash -c 'netstat -tulanp' | grep -i -c "$1";
 }
 
-#reload bash profile
+#reload (re-source) bash profile
 rl() {
 	. ~/.profile
 }
@@ -156,24 +156,35 @@ contains() {
     fi
 }
 
-#start find changes
+###############################################################################
+# Functions to detect file changes
+#
+#   Access - the last time the file was read
+#   Modify - the last time the file content has been modified OR file has been 
+#            saved
+#   Change - the last time meta data of the file was changed (e.g. permissions)
+#            AND also when file is modified
+###############################################################################
+
+# start find changes - set MARK modificaton time to now
 sfch() {
-	touch /tmp/MARK	
+	touch -m /tmp/MARK	
 }
 
-# find changed files since 
+# find modified files since MARK was modified 
 fch() {
 	path="$HOME/logs"
 	if (( $# != 1 )); then
-		fn="file-changes"
+		datetimenow=$(date -r /tmp/MARK +"%Y%m%d-%H%M%S")
+		fn="file-changes-$datetimenow" 
 	else
 		fn=$1
 	fi
 	file_path="$path/$fn.log"
 	#echo $file_path
-	date=$(date -r /tmp/MARK +"%Y-%m-%d %H:%M:%S")
-    printf "Files accessed or modified after: $date...\n" | tee "$file_path"
-	sudo find / -path /var/cache -prune -o -path /run -prune -o -path /tmp -prune -o -path /sys -prune -o -path /proc -prune -o -newercm /tmp/MARK -printf "[Acc: %AY-%Am-%Ad %AH:%AM:%.2AS] [Mod: %TY-%Tm-%Td %TH:%TM:%.2TS] %p\n" | tee -a "$file_path"
+	date=$(date -r /tmp/MARK +"%Y-%m-%d %H:%M:%S") # modified time of MARK
+    printf "Files modified after $date...\n" | tee "$file_path"
+	sudo find / -type d \( -name .mozilla -o -name .cache \) -prune -o -path /dev -prune -o -path /var/cache -prune -o -path /run -prune -o -path /tmp -prune -o -path /sys -prune -o -path /proc -prune -o -newermm /tmp/MARK -printf "[Acc: %AY-%Am-%Ad %AH:%AM:%.2AS] [Mod: %TY-%Tm-%Td %TH:%TM:%.2TS] %p\n" | tee -a "$file_path"
 	printf "Entries written to '$file_path'\n"
 }
 
