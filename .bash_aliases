@@ -164,6 +164,10 @@ contains() {
 #            saved
 #   Change - the last time meta data of the file was changed (e.g. permissions)
 #            AND also when file is modified
+#
+# 	Note   - can't rely on modified time to detect new files from installs
+#	         as it can remain an older time (presume from original creating 
+#			 time)
 ###############################################################################
 
 # start find changes - set MARK modificaton time to now
@@ -184,7 +188,7 @@ fch() {
 	#echo $file_path
 	date=$(date -r /tmp/MARK +"%Y-%m-%d %H:%M:%S") # modified time of MARK
     printf "Files modified after $date...\n" | tee "$file_path"
-	sudo find / -type d \( -name .mozilla -o -name .cache \) -prune -o -path /dev -prune -o -path /var/cache -prune -o -path /run -prune -o -path /tmp -prune -o -path /sys -prune -o -path /proc -prune -o -newermm /tmp/MARK -printf "[Acc: %AY-%Am-%Ad %AH:%AM:%.2AS] [Mod: %TY-%Tm-%Td %TH:%TM:%.2TS] %p\n" | tee -a "$file_path"
+	sudo find / -type d \( -name .mozilla -o -name .cache \) -prune -o -path /dev -prune -o -path /var/cache -prune -o -path /run -prune -o -path /tmp -prune -o -path /sys -prune -o -path /proc -prune -o -newercm /tmp/MARK -printf "[Acc: %AY-%Am-%Ad %AH:%AM:%.2AS] [Mod: %TY-%Tm-%Td %TH:%TM:%.2TS] %p\n" | tee -a "$file_path"
 	printf "Entries written to '$file_path'\n"
 }
 
