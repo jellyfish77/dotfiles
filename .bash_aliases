@@ -176,20 +176,25 @@ sfch() {
 }
 
 # find modified files since MARK was modified 
+# usage: 
+# 	fch
+# 	fch descr-of-change
+# 	(will add desc-of-change to end of file name) 
 fch() {
-	path="$HOME/logs"
-	if (( $# != 1 )); then
-		datetimenow=$(date -r /tmp/MARK +"%Y%m%d-%H%M%S")
-		fn="file-changes-$datetimenow" 
-	else
-		fn=$1
+	path="$HOME/logs/install"
+	mkdir -p -- "$path"  # if not exist, create
+	datetimenow=$(date -r /tmp/MARK +"%Y%m%d-%H%M%S")
+	fn="$datetimenow-file-changes" 
+	if (( $# == 1 )); then
+		fn=$fn-$1
 	fi
 	file_path="$path/$fn.log"
+	printf "Writing changed files to: '$file_path'\n"
 	#echo $file_path
 	date=$(date -r /tmp/MARK +"%Y-%m-%d %H:%M:%S") # modified time of MARK
-    printf "Files modified after $date...\n" | tee "$file_path"
+    printf "Searching for files modified after $date...\n" | tee "$file_path"
 	sudo find / -type d \( -name .mozilla -o -name .cache \) -prune -o -path /dev -prune -o -path /var/cache -prune -o -path /run -prune -o -path /tmp -prune -o -path /sys -prune -o -path /proc -prune -o -newercm /tmp/MARK -printf "[Acc: %AY-%Am-%Ad %AH:%AM:%.2AS] [Mod: %TY-%Tm-%Td %TH:%TM:%.2TS] %p\n" | tee -a "$file_path"
-	printf "Entries written to '$file_path'\n"
+	printf "Done. File changes written to: '$file_path'\n"
 }
 
 foo(){ echo "Hello"; }
