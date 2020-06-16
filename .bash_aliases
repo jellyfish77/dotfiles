@@ -72,7 +72,7 @@ alias nowdate='date +"%d-%m-%Y"'
 alias ports='netstat -tulanp'
 
 ## pass options to free ##
-alias meminfo='free -m -l -t'
+alias mem='free -m -l -t'
  
 ## get top process eating memory
 alias psmem='ps auxf | sort -nr -k 4'
