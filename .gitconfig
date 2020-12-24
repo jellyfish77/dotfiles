@@ -138,8 +138,6 @@
 	# push with notes
 	papn = "!git push --all origin && git push origin refs/notes/commits && git push origin "refs/notes/*" && git push --all --prune && git fetch -p #"
 
-
-
 	# Update - git reset --hard does the same thing
 	# Reset (Completely destory working directory and reset from branch)
 	# * switch to a branch <version or branch>

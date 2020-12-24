@@ -23,6 +23,16 @@ alias gke='find . -type d -empty -not -path "./.git/*" -not -path "./.metadata/*
 
 ########################################################################
 #
+# Docker aliases
+#
+########################################################################
+# When invoked without arguments will do a ps, otherwise it will 
+# just pass on the given arguments to the docker command. 
+alias d='_f() { if [[ $# == 0 ]]; then docker ps; else docker "$@"; fi }; _f'
+
+
+########################################################################
+#
 # Command Aliases
 #
 ########################################################################
@@ -85,8 +95,6 @@ alias psmem10='ps auxf | sort -nr -k 4 | head -10'
 # get top process eating cpu ##
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
-
-
  
 ## Get server cpu info ##
 alias cpi='lscpu'
