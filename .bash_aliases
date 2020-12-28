@@ -28,7 +28,11 @@ alias gke='find . -type d -empty -not -path "./.git/*" -not -path "./.metadata/*
 ########################################################################
 # When invoked without arguments will do a ps, otherwise it will 
 # just pass on the given arguments to the docker command. 
-alias d='_f() { if [[ $# == 0 ]]; then docker ps; else docker "$@"; fi }; _f'
+alias d='_f() { if [[ $# == 0 ]]; then docker ps -a; else docker "$@"; fi }; _f'
+alias dr='_f() { if [[ $# == 0 ]]; then d ps; else docker "$@"; fi }; _f'
+alias di='d images'
+alias dl='d logs'
+alias dn='d network ls'
 
 
 ########################################################################
