@@ -59,8 +59,6 @@ export HISTSIZE=99999
 # Seafly Prompt config
 ##########################################
 
-. ~/.bash-seafly-prompt/command_prompt.bash
-
 #seafly prompt, see: https://github.com/bluz71/bash-seafly-prompt
 export SEAFLY_SHOW_USER=1
 export SEAFLY_PROMPT_SYMBOL=">"
@@ -83,3 +81,5 @@ export PROMPT_DIRTRIM=2
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUPSTREAM=1
+
+

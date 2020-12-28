@@ -23,6 +23,20 @@ alias gke='find . -type d -empty -not -path "./.git/*" -not -path "./.metadata/*
 
 ########################################################################
 #
+# Docker aliases
+#
+########################################################################
+# When invoked without arguments will do a ps, otherwise it will 
+# just pass on the given arguments to the docker command. 
+alias d='_f() { if [[ $# == 0 ]]; then docker ps -a; else docker "$@"; fi }; _f'
+alias dr='_f() { if [[ $# == 0 ]]; then d ps; else docker "$@"; fi }; _f'
+alias di='d images'
+alias dl='d logs'
+alias dn='d network ls'
+
+
+########################################################################
+#
 # Command Aliases
 #
 ########################################################################
@@ -72,18 +86,22 @@ alias nowdate='date +"%d-%m-%Y"'
 alias ports='netstat -tulanp'
 
 ## pass options to free ##
-alias mem='free -m -l -t'
- 
-## get top process eating memory
+alias meminfo='free -m -l -t'
+
+# Processes ###################################################################
+# Process Tree
+alias pt='ps -axjf --headers' 			
+
+# get top process eating memory
 alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
  
-## get top process eating cpu ##
+# get top process eating cpu ##
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
  
 ## Get server cpu info ##
-alias cpuinfo='lscpu'
+alias cpi='lscpu'
   
 ## get GPU ram on desktop / laptop##
 alias gpumeminfo='grep -i --color memory /var/log/Xorg.0.log'
