@@ -1,34 +1,43 @@
-# <type>: (If applied, this commit will... <insert action of commit here>)
+#SUBJECT
+# <type>(<scope>): (If applied, this commit will... <insert action of commit here>)
 #use hashtags: #wip, #irr, #
 # e.g.:
 #feat: change logic to calc block density 
 #fix: algorithm to determine sum of parts #wip
-# |<----  Using a Maximum Of 50 Characters  ---->|
-#feat:  
+#See https://github.com/angular/angular.js for good examples of this:
+#https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits
+# |<----  Use a Maximum Of 50 Characters  ------>| ... or 72 chars? -->|
+#feat: 
 #fix: 
 #refactor: 
-#style: 
+#style:  
 #docs: 
-#chore:
+#chore: 
+#perf: 
 
+#BODY
 # Explain why this change is being made
 # |<----   Try To Limit Each Line to a Maximum Of 72 Characters   ---->|
 #This change 
 
+
+#FOOTER
 # Provide links or keys to any relevant tickets, articles or other resources
-# Example: Github issue #23
-#Github issue #
+# Example: Github issue #23 (GitHub automatically converts them).
+#Fixes #
 #Defect #
 
 # --- COMMIT END ---
 # Type can be 
 #    feat     (new feature)
 #    fix      (bug fix)
+#    style    (Feature relating to style)
 #    refactor (refactoring production code)
 #    style    (formatting, missing semi colons, etc; no code change)
 #    docs     (changes to documentation)
 #    test     (adding or refactoring tests; no production code change)
-#    chore    (updating grunt tasks etc; no production code change)
+#    chore    (updating grunt tasks, code maintenance; no production code change)
+#    perf     (performance)
 # --------------------
 # Remember to
 #    Capitalize the subject line
